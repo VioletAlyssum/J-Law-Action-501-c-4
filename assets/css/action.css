@@ -1,0 +1,79 @@
+/* Jennifer's Law Action: the few styles that differ from JennifersLaw.org. */
+/* Footer brand set in type (JennifersLaw.org uses an image of its own name). */
+.action-brand{display:flex;flex-direction:column;gap:8px;margin-bottom:18px;}
+.action-brand .ab-name{font-family:var(--display);font-size:34px;font-weight:600;letter-spacing:.5px;color:var(--white);line-height:1.1;}
+.action-brand .ab-line{font-family:var(--sans);font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--steel1);}
+.ab-note{color:var(--muted);font-size:14px;line-height:1.6;max-width:420px;}
+.ab-note a{color:var(--steel1);border-bottom:1px solid var(--steel3);}
+.footer-legal{display:flex;flex-direction:column;gap:6px;}
+/* Petition forms outside /petitions/ (homepage, The Demand) */
+.pt-form .pt-check + .pt-check{margin-top:8px;}
+.jl-email{background:none;border:0;padding:0;color:var(--steel1);border-bottom:1px solid var(--steel3);font:inherit;cursor:pointer;}
+@media(max-width:700px){.action-brand .ab-name{font-size:28px;}}
+
+/* Petition styles (same as on the petition pages) */
+/* Petitions (Oct 2026) */
+.pt-grid{display:grid;grid-template-columns:minmax(0,1fr) 420px;gap:56px;align-items:start;}
+@media(max-width:960px){.pt-grid{grid-template-columns:1fr;gap:34px;}}
+.pt-text{border:1px solid var(--steel3);background:var(--panel);padding:34px 32px;margin-bottom:26px;}
+.pt-text .pt-label{font-family:var(--sans);font-size:11.5px;letter-spacing:2px;text-transform:uppercase;color:var(--steel1);display:block;margin-bottom:14px;}
+.pt-text p{font-family:var(--body);font-weight:300;font-size:18px;line-height:1.8;color:var(--steel2);margin-bottom:1em;}
+.pt-text p:last-child{margin-bottom:0;}
+.pt-meta{list-style:none;margin:0 0 22px;padding:0;}
+.pt-meta li{padding:12px 0;border-bottom:1px solid var(--hair);color:var(--steel2);font-size:15.5px;line-height:1.6;}
+.pt-meta li:last-child{border-bottom:none;}
+.pt-meta strong{display:block;font-family:var(--sans);font-size:11px;letter-spacing:1.4px;text-transform:uppercase;color:var(--steel1);font-weight:600;margin-bottom:3px;}
+.pt-form{background:linear-gradient(160deg,#2A3C5F 0%,#1F2F4E 100%);border:1px solid rgba(140,153,172,.4);box-shadow:0 30px 60px rgba(0,0,0,.45);padding:30px 28px;}
+.pt-form h2{font-family:var(--serif);font-size:24px;font-weight:700;color:var(--white);margin-bottom:6px;}
+.pt-count{font-family:var(--serif);font-size:40px;font-weight:800;color:var(--white);line-height:1;}
+.pt-count-lbl{font-family:var(--sans);font-size:11.5px;letter-spacing:1.3px;text-transform:uppercase;color:var(--steel1);margin:6px 0 20px;}
+.pt-form label{display:block;font-family:var(--sans);font-size:11px;letter-spacing:1.2px;text-transform:uppercase;color:var(--steel1);margin:12px 0 6px;}
+.pt-form input[type=text],.pt-form input[type=email],.pt-form textarea{width:100%;background:var(--bg);color:var(--white);border:1px solid var(--steel3);padding:11px 12px;font-family:var(--body);font-size:15px;}
+.pt-form textarea{min-height:84px;resize:vertical;}
+.pt-row{display:grid;grid-template-columns:1fr 70px 100px;gap:10px;}
+.pt-check{display:flex;gap:10px;align-items:flex-start;margin-top:14px;color:var(--steel2);font-size:14px;line-height:1.5;text-transform:none;letter-spacing:0;font-family:var(--body);}
+.pt-check input{margin-top:4px;accent-color:#8C99AC;}
+.pt-form .btn-chrome{width:100%;margin-top:20px;text-align:center;}
+.pt-hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;}
+.pt-msg{display:none;margin-top:14px;padding:12px 14px;border:1px solid var(--steel3);color:var(--steel2);font-size:14.5px;line-height:1.55;}
+.pt-msg.show{display:block;}
+.pt-msg.err{border-color:#6FB3FF;}
+.pt-fine{font-size:12.5px;color:var(--muted);margin-top:14px;line-height:1.55;}
+.pt-groups{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:10px 0 8px;}
+@media(max-width:860px){.pt-groups{grid-template-columns:1fr;}}
+.pt-group-btn{display:block;text-align:left;cursor:pointer;background:linear-gradient(160deg,#263B63 0%,#1E3054 100%);border:1px solid rgba(140,153,172,.45);padding:26px 24px;color:var(--white);font-family:var(--serif);font-size:20px;line-height:1.35;transition:border-color .15s;}
+.pt-group-btn:hover,.pt-group-btn:focus,.pt-group-btn[aria-pressed=true]{border-color:#DCE7F5;}
+.pt-group-btn span{display:block;font-family:var(--sans);font-size:11.5px;letter-spacing:1.3px;text-transform:uppercase;color:var(--steel1);margin-top:10px;}
+.pt-list{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;}
+@media(max-width:860px){.pt-list{grid-template-columns:1fr;}}
+.pt-card{background:var(--panel);border:1px solid var(--hair);padding:26px 24px;display:flex;flex-direction:column;gap:10px;}
+.pt-card h3{font-family:var(--serif);font-size:21px;font-weight:600;color:var(--white);}
+.pt-card .pt-when{font-family:var(--sans);font-size:11.5px;letter-spacing:1.2px;text-transform:uppercase;color:#DCE7F5;}
+.pt-card p{color:var(--steel2);font-weight:300;font-size:15px;line-height:1.6;}
+.pt-card .pt-n{font-family:var(--sans);font-size:12px;color:var(--muted);}
+.pt-card .see-all{margin-top:6px;align-self:flex-start;}
+.pt-sel{max-height:260px;overflow:auto;border:1px solid var(--steel3);padding:8px 12px;margin-top:6px;}
+.pt-sel label{display:flex;gap:10px;align-items:center;text-transform:none;letter-spacing:0;font-family:var(--body);font-size:14px;color:var(--steel2);margin:6px 0;}
+
+/* Homepage styles that JennifersLaw.org keeps inside its page body (hero heading, record cards, poll) */
+.chrome{background:linear-gradient(115deg,#5A6577 0%,#DCE2EA 25%,#F3F5F8 40%,#DCE2EA 55%,#5A6577 100%);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shimmer 8s ease-in-out infinite;}
+@keyframes shimmer{0%,100%{background-position:0% 0;}50%{background-position:100% 0;}}
+h1.page-title.hero-two-line{font-family:var(--display);font-size:36px;line-height:1.35;letter-spacing:.3px;font-weight:600;max-width:640px;margin-top:-9px;}
+.hero-two-line .hl{display:block;}
+.hero-two-line .hl-2{margin-top:16px;}
+.hero-two-line em{font-style:italic;}
+@media(max-width:960px){.hero-two-line{font-size:21px !important;}}
+/* Oct 2026: DuPage Record cards and the voting poll */
+.rec-cards{grid-template-columns:repeat(2,1fr) !important;gap:16px !important;}
+@media(max-width:700px){.rec-cards{grid-template-columns:1fr !important;}}
+.poll-choice{display:flex !important;gap:14px;align-items:flex-start;cursor:pointer;}
+.poll-choice input{margin-top:3px;accent-color:#2C405C;width:17px;height:17px;flex-shrink:0;}
+.poll-choice .pc-body p{font-size:16.5px;line-height:1.42;}
+.poll-choice:has(input:checked){outline:2px solid #2C405C;outline-offset:-2px;}
+.poll-choice input:focus-visible{outline:2px solid #0A1220;outline-offset:2px;}
+
+/* Action homepage hero: shorter text than JennifersLaw.org, so it stacks from the top. */
+.hero-copy{justify-content:flex-start !important;}
+.hero-copy .hero-paras{margin-top:26px;}
+.hero-copy .hero-ctas{margin-top:34px !important;}
+@media(max-width:520px){.masthead-name{font-size:25px !important;white-space:nowrap;}.masthead .jl-mark{height:36px;}}

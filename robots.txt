@@ -1,0 +1,6 @@
+User-agent: *
+Disallow: /api/
+Disallow: /_site-tools/
+Disallow: /support/thank-you.html
+
+Sitemap: https://www.jenniferslawaction.org/sitemap.xml
