@@ -23,6 +23,9 @@ import os
 import re
 import sys
 
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import rohm_record as R
+
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 os.chdir(ROOT)
 
@@ -93,8 +96,8 @@ def footer(r):
     return f'''<footer class="site-footer">
   <div class="wrap footer-grid">
     <div class="footer-brand">
-      <a href="{r}index.html" class="action-brand"><span class="ab-name">{NAME}</span><span class="ab-line">We, the people, will hold judges accountable.</span></a>
-      <p class="ab-note">The documented record of what the judges did, every order and filing in full, is published at <a href="{RECORD}/" rel="noopener">JennifersLaw.org</a>.</p>
+      <a href="{r}index.html" class="action-brand"><span class="ab-name">{NAME}</span><span class="ab-line">Holding judges accountable for the harm they cause.</span></a>
+      <p class="ab-note">The documented record of what the judges did, with every order in full, is published at <a href="{RECORD}/" rel="noopener">JennifersLaw.org</a>.</p>
     </div>
     <nav aria-label="Footer — Campaign">
       <h2 class="footer-h">Campaign</h2>
@@ -187,7 +190,7 @@ DEMAND_TEXT = ('To the United States Congress and the legislature of every state
 
 def national_form(fid, r):
     return f'''<form class="pt-form" id="{fid}" data-petition-form data-petitions="peoples-demand" data-api="{r}api/petition-sign.php" novalidate>
-  <h2 id="{fid}-h">Sign the People&#8217;s Demand</h2>
+  <h2 id="{fid}-h">Sign the Demand</h2>
   <div class="pt-count" data-count="peoples-demand">&mdash;</div><div class="pt-count-lbl">People have signed</div>
   <label for="{fid}-name">Full name</label><input id="{fid}-name" type="text" name="name" autocomplete="name" required>
   <label for="{fid}-email">Email</label><input id="{fid}-email" type="email" name="email" autocomplete="email" required>
@@ -201,7 +204,7 @@ def national_form(fid, r):
   <label class="pt-check"><input type="checkbox" name="updates" value="1"> Keep me updated about this campaign by email.</label>
   <div class="pt-hp" aria-hidden="true"><label>Leave this empty<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
   <input type="hidden" name="t" value="">
-  <button type="submit" class="btn-signal" style="width:100%;margin-top:20px;">Add My Name</button>
+  <button type="submit" class="btn-signal" style="width:100%;margin-top:20px;text-align:center;">Add My Name</button>
   <div class="pt-msg" role="status" aria-live="polite"></div>
   <p class="pt-fine">Your email address is never published or shared, and is never given to the people a petition is delivered to. This petition never expires.</p>
 </form>'''
@@ -236,10 +239,10 @@ HOME = '''
       </div>
       <h2 id="bis-h" class="bis-quote"><span class="bis-qmark">&ldquo;</span><span class="chrome">Because I Said So</span><span class="bis-qmark">&rdquo;</span></h2>
       <div class="bis-links">
-        <a class="bis-cta" href="the-demand.html">The Demand: End Judicial Immunity and Make Judges Answer to the People &rarr;</a>
-        <a class="bis-cta" href="petitions/index.html">Sign the Petitions &rarr;</a>
+        <a class="bis-cta" href="petitions/judge-robert-w-rohm.html">The Case Against Reappointing Judge Rohm: $29,478.23 in Sanctions, No Ruling on the Merits &rarr;</a>
         <a class="bis-cta" href="reappointment-vote.html">The 2027 Reappointment Vote: You Don&#8217;t Get a Vote. They Do. &rarr;</a>
-        <a class="bis-cta" href="''' + RECORD + '''/" rel="noopener">The Record, Every Order and Filing, at JennifersLaw.org &rarr;</a>
+        <a class="bis-cta" href="petitions/index.html">Sign the Petitions &rarr;</a>
+        <a class="bis-cta" href="''' + RECORD + '''/accountability/court-filings.html" rel="noopener">Every Order, Published in Full, at JennifersLaw.org &rarr;</a>
       </div>
     </div>
   </div>
@@ -248,36 +251,73 @@ HOME = '''
 <section class="hero page-hero" style="padding:35px 0;">
   <div class="wrap hero-grid">
     <div class="hero-copy">
-      <h1 class="page-title hero-two-line"><span class="hl">Judges answer to no one.</span><span class="hl hl-2">We, the people, are going to change that.</span></h1>
+      <h1 class="page-title hero-two-line"><span class="hl">The judges caused the harm.</span><span class="hl hl-2">The victim pays for it.</span></h1>
       <div class="hero-paras">
-        <p class="page-sub" style="font-size:17px;font-style:italic;line-height:1.5;">Jennifer&#8217;s Law Action is the campaign for judicial accountability. It organizes citizens, puts the documented record in front of the people who decide whether judges keep their seats, and campaigns for laws that end judicial immunity and make judges answer to an independent body of citizens.</p>
-        <p class="page-sub" style="margin-top:14px;font-size:17px;font-style:italic;line-height:1.5;">Every effort to reform the courts from the inside has asked judges to hold themselves accountable. They never have, and they never will. Change has to come from outside the system, from ordinary people who refuse to accept it.</p>
+        <p class="page-sub" style="font-size:17px;font-style:italic;line-height:1.55;">''' + R.LEAD + '''</p>
+        <p class="page-sub" style="margin-top:14px;font-size:17px;font-style:italic;line-height:1.55;">''' + R.LEAD2 + '''</p>
       </div>
       <div class="hero-ctas" style="display:flex;gap:14px;flex-wrap:wrap;align-items:center;">
-        <a href="the-demand.html#sign" class="btn-signal">Sign the People&#8217;s Demand</a>
-        <a href="petitions/index.html" class="btn-chrome">See the Petitions</a>
+        <a href="petitions/judge-robert-w-rohm.html" class="btn-signal">The Case Against Judge Rohm</a>
+        <a href="petitions/index.html" class="btn-chrome">Sign the Petitions</a>
       </div>
     </div>
-    ''' + STATS_EXHIBIT + '''
+    ''' + R.exhibit_html() + '''
   </div>
 </section>
 
-<section class="section" aria-labelledby="demand-h"><div class="wrap two-col" style="align-items:start;">
-  <div>
-    <p class="eyebrow" style="margin-bottom:16px;">The Demand</p>
-    <h2 id="demand-h" class="section-h">End Judicial Immunity. Make Judges Answer to the People.</h2>
-    <p class="latest-p"><strong>End judicial immunity.</strong> No judge should be immune for deliberate constitutional violations, corruption, fraud, retaliation, conduct outside lawful authority, or conduct causing catastrophic harm.</p>
-    <p class="latest-p"><strong>Create independent accountability.</strong> A standing body of people who are neither judges nor lawyers, with no ties to the courts, answering to a board of citizens, with the power to penalize, suspend, and remove judges, the way every employer treats every employee.</p>
-    <p class="latest-p"><strong>No lawsuit required.</strong> No one harmed by a judge should have to file another case, or win the approval of other judges, before anything happens.</p>
-    <a href="the-demand.html" class="see-all">Read the Full Demand &rarr;</a>
+<section class="section sec-lift sec-plate" aria-labelledby="who-pays-h">
+  <div class="wrap center" style="max-width:1040px;">
+    <p class="kicker">Who Pays</p>
+    <h2 id="who-pays-h" class="section-h" style="margin:0 auto 30px;font-size:44px;">One case. One judge. One victim.</h2>
+    <div class="wp-grid">
+      <div class="wp-card">
+        <p class="wp-h">What the victim pays</p>
+        <ul>
+          <li><b>$29,478.23</b> in sanctions</li>
+          <li><b>$30,000</b> for the appeal</li>
+          <li><b>$10,000</b> for the bond on the sanctions</li>
+          <li><b>11,500+</b> hours on this case, and <b>1,000+</b> more for the appeal</li>
+          <li><b>Eight years</b> of her life, with no ruling on the merits</li>
+          <li>Her fee waiver, her right to appear remotely, and her right to email the court</li>
+        </ul>
+      </div>
+      <div class="wp-card wp-dark">
+        <p class="wp-h">What the judges pay</p>
+        <p class="wp-nothing">Nothing.</p>
+        <ul>
+          <li>Not one minute of their time</li>
+          <li>Not one dollar of their money</li>
+          <li>No review, no discipline, no consequence</li>
+          <li>And they keep their seats</li>
+        </ul>
+      </div>
+    </div>
+    <p class="wp-close">That is the whole system, in a single case. Jennifer&#8217;s Law Action exists to end it.</p>
   </div>
-  <div>''' + national_form('pt-home', '') + '''</div>
+</section>
+
+<section class="section" aria-labelledby="case-h"><div class="wrap">
+  <p class="kicker">The Case Against Reappointing Judge Rohm</p>
+  <h2 id="case-h" class="section-h" style="max-width:none;">''' + str(R.count_items() + 43) + ''' Reasons Not to Reappoint Judge Rohm</h2>
+  <p style="color:var(--steel2);font-size:16.5px;line-height:1.65;max-width:820px;margin-bottom:26px;">Judge Rohm is an associate judge. No voter ever elected him. He keeps his seat after June 30, 2027 only if three-fifths of DuPage County&#8217;s circuit judges vote yes, by secret ballot. This is part of what they would be voting to keep.</p>
+  <div class="card-grid rec-cards">
+    <a class="law-card-light" style="padding:18px 22px;" href="petitions/judge-robert-w-rohm.html"><span class="law-num">August 28 &amp; 31, 2026</span><p>Sanctioned her $3,000 because she could not appear in person for a trial that could not occur, then dismissed her case with prejudice.</p></a>
+    <a class="law-card-light" style="padding:18px 22px;" href="petitions/judge-robert-w-rohm.html"><span class="law-num">October 28, 2026</span><p>Ordered her to pay $26,478.23 to defense counsel&#8217;s firm, at $450 an hour, for work counsel did pro bono.</p></a>
+    <a class="law-card-light" style="padding:18px 22px;" href="petitions/judge-robert-w-rohm.html"><span class="law-num">August 6, 2026</span><p>Denied her motions on their titles alone. Asked whether that was what he was doing: &ldquo;That&#8217;s exactly correct.&rdquo;</p></a>
+    <a class="law-card-light" style="padding:18px 22px;" href="petitions/judge-robert-w-rohm.html"><span class="law-num">On the eve of trial</span><p>Gave her seven hours and 29 minutes on a Friday night to rewrite a 63-page complaint, and nine court days to prepare for trial on years of events.</p></a>
+    <a class="law-card-light" style="padding:18px 22px;" href="petitions/judge-robert-w-rohm.html"><span class="law-num">August 31, 2026</span><p>Denied a petition to remove himself, although Illinois law requires that another judge hear it.</p></a>
+    <a class="law-card-light" style="padding:18px 22px;" href="petitions/judge-robert-w-rohm.html"><span class="law-num">October 28, 2026</span><p>Revoked her fee waiver, required her to appear in person 1,200 miles away to ask for it back, and barred her from emailing the court.</p></a>
+  </div>
+  <div style="display:flex;gap:16px;flex-wrap:wrap;margin-top:30px;">
+    <a href="petitions/judge-robert-w-rohm.html" class="btn-signal">Read All ''' + str(R.count_items() + 43) + ''' and Sign</a>
+    <a href="reappointment-vote.html" class="btn-ghost">How the Reappointment Vote Works</a>
+  </div>
 </div></section>
 
 <section class="section" aria-labelledby="pet-h"><div class="wrap">
   <p class="kicker">Petitions</p>
-  <h2 id="pet-h" class="section-h" style="max-width:none;">Every Judge in This Record Has Seen This Conduct. Not One Has Called It Wrong.</h2>
-  <p style="color:var(--muted);font-size:16px;max-width:760px;margin-bottom:26px;">Each petition is tied to a judge whose conduct is documented in the public record at <a href="''' + RECORD + '''/accountability/judges.html" rel="noopener" ''' + LINK + '''>JennifersLaw.org</a>. Signatures are delivered to the people who decide whether that judge keeps the seat.</p>
+  <h2 id="pet-h" class="section-h" style="max-width:none;">Every Judge in This Record Saw This Conduct. Not One Called It Wrong.</h2>
+  <p style="color:var(--steel2);font-size:16.5px;line-height:1.65;max-width:820px;margin-bottom:26px;">Each petition names a judge whose orders are published in full at <a href="''' + RECORD + '''/accountability/judges.html" rel="noopener" ''' + LINK + '''>JennifersLaw.org</a>. Signatures go to the people who decide whether that judge keeps the seat: the circuit judges, for associate judges in 2027, and the voters, at retention elections in 2028 and 2030.</p>
   <div class="card-grid rec-cards">
     <a class="law-card-light" style="padding:18px 22px;" href="petitions/index.html"><span class="law-num">Sign Them All at Once</span><p>One form, one signature on every petition you choose.</p></a>
     <a class="law-card-light" style="padding:18px 22px;" href="reappointment-vote.html"><span class="law-num">The 2027 Reappointment Vote</span><p>You don&#8217;t get a vote. They do. Associate judges keep their seats only if three-fifths of the circuit judges say yes.</p></a>
@@ -286,13 +326,26 @@ HOME = '''
   </div>
 </div></section>
 
+<section class="section" aria-labelledby="demand-h"><div class="wrap two-col" style="align-items:start;">
+  <div>
+    <p class="eyebrow" style="margin-bottom:16px;">What Has to Change</p>
+    <h2 id="demand-h" class="section-h">End Judicial Immunity. Make Judges Accountable Without One More Lawsuit.</h2>
+    <p class="latest-p"><strong>End judicial immunity.</strong> No judge should be immune for deliberate constitutional violations, corruption, fraud, retaliation, conduct outside lawful authority, or conduct causing catastrophic harm.</p>
+    <p class="latest-p"><strong>Create independent accountability.</strong> A standing body of people who are neither judges nor lawyers, with no ties to the courts, answering to a board of citizens, with the power to penalize, suspend, and remove judges, the way every employer treats every employee.</p>
+    <p class="latest-p"><strong>Stop making the victim pay.</strong> No one harmed by a judge should have to file another case, pay for another appeal, or win the approval of other judges before anything happens.</p>
+    <a href="the-demand.html" class="see-all">Read the Full Demand &rarr;</a>
+  </div>
+  <div>''' + national_form('pt-home', '') + '''</div>
+</div></section>
+
 ''' + newsletter() + '''
 
 <section class="section sec-lift" aria-labelledby="who-h"><div class="wrap">
-  <h2 id="who-h" class="section-h">Who We Are</h2>
-  <div class="prose" style="max-width:820px;">
-    <p style="color:var(--steel2);font-size:16.5px;line-height:1.7;">Jennifer&#8217;s Law Action is a 501(c)(4) social welfare organization being incorporated in Texas. It was founded by Jennifer Canali, a citizen with no law degree who taught herself the law and fought eight cases before 25 judges over more than 11.5 years without winning once. It is separate from Jennifer&#8217;s Law Foundation, which publishes the documented record and the research at <a href="''' + RECORD + '''/" rel="noopener" ''' + LINK + '''>JennifersLaw.org</a>.</p>
-    <p style="margin-top:18px;"><a href="about.html" class="see-all">About Jennifer&#8217;s Law Action &rarr;</a></p>
+  <h2 id="who-h" class="section-h">About Jennifer&#8217;s Law Action</h2>
+  <div class="prose" style="max-width:860px;">
+    <p style="color:var(--steel2);font-size:16.5px;line-height:1.7;">Jennifer&#8217;s Law Action was founded by Jennifer Canali. She began with no legal training, taught herself to do everything a lawyer does, and for more than 11.5 years has litigated at or above the level of every attorney she has faced, in eight cases before 25 judges. In all that time, not one of those judges has ruled on the merits of her claims. Every order in her cases is published at <a href="''' + RECORD + '''/" rel="noopener" ''' + LINK + '''>JennifersLaw.org</a>, so anyone can check every word.</p>
+    <p style="color:var(--steel2);font-size:16.5px;line-height:1.7;margin-top:14px;">Jennifer&#8217;s Law Action is a 501(c)(4) social welfare organization being incorporated in Texas. It runs the petitions, the public campaigns on the reappointment and retention of judges, and the legislative campaign to end judicial immunity. It is separate from Jennifer&#8217;s Law Foundation, which publishes the record and the research.</p>
+    <p style="margin-top:18px;"><a href="about.html" class="see-all">More About Jennifer&#8217;s Law Action &rarr;</a></p>
   </div>
 </div></section>
 '''
@@ -300,8 +353,8 @@ HOME = '''
 DEMAND = '''
 <section class="page-hero"><div class="wrap">
   <p class="eyebrow">The Campaign</p>
-  <h1 class="page-title">The People&#8217;s Demand</h1>
-  <p class="page-sub">End judicial immunity. Make judges answer to the people. No lawsuit required.</p>
+  <h1 class="page-title">The Demand</h1>
+  <p class="page-sub">End judicial immunity. Make judges accountable to an independent body of citizens. Stop making the victim pay.</p>
 </div></section>
 <section class="section"><div class="wrap rec-grid">
   <div class="prose">
@@ -315,12 +368,17 @@ DEMAND = '''
       <li>with immediate, escalating consequences: penalty, probation, and removal;</li>
       <li>and with severe consequences for anyone in that chain who fails to act.</li>
     </ul>
-    <p><strong>3. No lawsuit required.</strong> No one harmed by a judge should have to hire a lawyer, file another case, or win the approval of other judges before anything happens.</p>
+    <p><strong>3. Stop making the victim pay.</strong> No one harmed by a judge should have to hire a lawyer, file another case, pay for another appeal, or win the approval of other judges before anything happens.</p>
     <p><strong>4. Put everything on the record.</strong> Every hearing recorded and livestreamed, every filing public, and every ruling explained in writing, so there is a record to hold judges to.</p>
 
-    <h2>Why It Has to Come From Us</h2>
+    <h2>What Happens Without It</h2>
+    <p>''' + R.LEAD + '''</p>
+    <p>''' + R.LEAD2 + '''</p>
+    <p class="rr-thesis" style="font-size:30px;">''' + R.THESIS + '''</p>
+
+    <h2>Why Change Will Not Come From the Courts</h2>
     <p>In fiscal year 2024, 1,510 misconduct complaints were filed against federal judges; three ended in a censure or reprimand, and not one judge was suspended. The Illinois Judicial Inquiry Board received 556 requests for investigation and closed 531 of them without investigating at all. The bodies that oversee judges are run by judges and lawyers, and they protect their own.</p>
-    <p>Jennifer Canali taught herself the law, matched every attorney she faced, and fought eight cases before 25 judges for more than 11.5 years. She has never won. Every order and filing is published at <a href="''' + RECORD + '''/" rel="noopener" ''' + LINK + '''>JennifersLaw.org</a> so anyone can verify it. If a citizen who did all of that cannot secure the most basic rights, the system is not broken. It is working exactly as it was designed to work.</p>
+    <p>Jennifer Canali began with no legal training. She taught herself to do everything a lawyer does and, for more than 11.5 years, has litigated at or above the level of every attorney she has faced, in eight cases before 25 judges. Not one of those judges has ever ruled on the merits of her claims. None has reviewed the facts and the evidence and applied the law to them. The last of them sanctioned her $29,478.23 and left her to pay about $70,000 for the chance to start over. Every order in her cases is published at <a href="''' + RECORD + '''/" rel="noopener" ''' + LINK + '''>JennifersLaw.org</a>, so anyone can check every word. When the judges cause the harm and the victim pays for it, the system is not broken. It is working exactly as it was designed to work.</p>
 
     <h2>Where This Goes</h2>
     <p>Judicial immunity can be ended by Congress for federal civil-rights claims and by state legislatures for state claims. In many states, including Illinois, the system for disciplining judges is written into the state constitution, so replacing it with independent accountability takes a constitutional amendment, and a constitutional amendment takes voters. Every name on this petition is a voter who has already decided.</p>
@@ -328,6 +386,7 @@ DEMAND = '''
   <div id="sign">
     <div class="pt-text" style="margin-bottom:20px;"><span class="pt-label">The Petition</span><p>''' + DEMAND_TEXT + '''</p></div>
     ''' + national_form('pt-demand', '') + '''
+    <div style="margin-top:26px;">''' + STATS_EXHIBIT + '''</div>
   </div>
 </div></section>
 '''
@@ -336,14 +395,14 @@ ABOUT = '''
 <section class="page-hero"><div class="wrap">
   <p class="eyebrow">About</p>
   <h1 class="page-title">About Jennifer&#8217;s Law Action</h1>
-  <p class="page-sub">The campaign for judicial accountability: petitions, public campaigns, and the legislative fight to end judicial immunity.</p>
+  <p class="page-sub">The petitions, the public campaigns, and the legislative fight to end judicial immunity.</p>
 </div></section>
 <section class="section"><div class="wrap">
   <div class="prose" style="max-width:860px;">
     <h2>What We Do</h2>
     <p>Jennifer&#8217;s Law Action organizes citizens to hold judges accountable. It runs the petitions to the people who decide whether judges keep their seats, the public campaigns around judicial reappointment and retention, and the legislative campaign to end judicial immunity and create independent accountability for judges.</p>
     <h2>Who Founded It</h2>
-    <p>Jennifer Canali started out knowing nothing about the law. She taught herself to do everything lawyers do and fought eight cases, in two counties, before 25 judges, over more than 11.5 years. She has done more than 19,000 hours of legal work without being paid a dollar for any of it, and she has never won. The complete record is published at <a href="''' + RECORD + '''/" rel="noopener" ''' + LINK + '''>JennifersLaw.org</a>.</p>
+    <p>Jennifer Canali started out knowing nothing about the law. She taught herself to do everything lawyers do and has litigated eight cases, in two counties, before 25 judges, over more than 11.5 years, at or above the level of every attorney she faced. In all that time, not one judge has ruled on the merits of her claims. She has done more than 19,000 hours of legal work without being paid a dollar for any of it. Every order is published at <a href="''' + RECORD + '''/" rel="noopener" ''' + LINK + '''>JennifersLaw.org</a>.</p>
     <h2>How We Are Organized</h2>
     <p>Jennifer&#8217;s Law Action is a 501(c)(4) social welfare organization being incorporated as a Texas nonprofit corporation. It is a separate organization from Jennifer&#8217;s Law Foundation, which is being organized under section 501(c)(3) for research and public education and publishes the documented record at JennifersLaw.org, and it is separate from Jennifer Canali personally. Each keeps its own bank account, and a gift to one never pays for the work of another.</p>
     <p>Contributions to Jennifer&#8217;s Law Action are not deductible as charitable contributions for federal income tax purposes. Jennifer&#8217;s Law Action may use contributions for lobbying and for public campaigns concerning the reappointment and retention of judges.</p>
@@ -385,8 +444,8 @@ THANKS = '''
 <section class="section"><div class="wrap">
   <p style="color:var(--steel2);font-size:17px;max-width:760px;margin-bottom:24px;">The fastest way to multiply your gift is to share the campaign with one more person.</p>
   <div style="display:flex;gap:16px;flex-wrap:wrap;">
-    <button type="button" class="btn-signal jl-share-open" data-share-url="the-demand.html" data-share-text="Judges answer to no one. I just backed the campaign to change that. Add your name:">Share the Campaign</button>
-    <a class="btn-ghost" href="../the-demand.html#sign">Sign the People&#8217;s Demand</a>
+    <button type="button" class="btn-signal jl-share-open" data-share-url="the-demand.html" data-share-text="The judges caused the harm and the victim pays for it. I just backed the campaign to change that:">Share the Campaign</button>
+    <a class="btn-ghost" href="../the-demand.html#sign">Sign the Demand</a>
   </div>
 </div></section>
 '''
@@ -481,17 +540,17 @@ NOTFOUND = '''
   <p class="page-sub">The address may have changed. Everything on this site is still here.</p>
 </div></section>
 <section class="section"><div class="wrap" style="display:flex;gap:18px;flex-wrap:wrap;">
-  <a class="btn-signal" href="the-demand.html#sign">Sign the People&#8217;s Demand</a>
+  <a class="btn-signal" href="the-demand.html#sign">Sign the Demand</a>
   <a class="btn-chrome" href="index.html">Go to the Homepage</a>
   <a class="btn-ghost" href="petitions/index.html">The Petitions</a>
 </div></section>
 '''
 
 PAGES = [
-    ('index.html', NAME + ' — We, the People, Will Hold Judges Accountable',
-     'The campaign to end judicial immunity and make judges answer to an independent body of citizens. Sign the People’s Demand and the petitions.', HOME, 'action-home'),
-    ('the-demand.html', 'The People’s Demand — ' + NAME,
-     'End judicial immunity. Make judges answer to an independent body of citizens. No lawsuit required. Add your name.', DEMAND, 'action-demand'),
+    ('index.html', NAME + ' — The Judges Caused the Harm. The Victim Pays.',
+     'Judge Rohm sanctioned a self-represented litigant $29,478.23 with no ruling on the merits. She pays about $70,000 to start over; the judges pay nothing.', HOME, 'action-home'),
+    ('the-demand.html', 'The Demand — ' + NAME,
+     'End judicial immunity, make judges accountable to an independent body of citizens, and stop making the victim pay. Add your name.', DEMAND, 'action-demand'),
     ('about.html', 'About — ' + NAME,
      'Jennifer’s Law Action runs the petitions, the public campaigns, and the legislative fight to end judicial immunity.', ABOUT, 'action-home'),
     ('support/index.html', 'Support Action — ' + NAME,
@@ -558,9 +617,67 @@ def petition_tweaks(main):
     main = main.replace('Your email address is never published or shared. It is used only to keep each person to one signature per petition.',
                         'Your email address is never published or shared, and is never given to the people a petition is delivered to.')
     # 4. anchors for the DuPage and Cook menu links on the petitions index
-    main = main.replace('<h2>DuPage County &middot; 18th Judicial Circuit</h2>', '<h2 id="dupage">DuPage County &middot; 18th Judicial Circuit</h2>')
-    main = main.replace('<h2>Cook County</h2>', '<h2 id="cook">Cook County</h2>')
+    main = main.replace('<h2 class="section-h">DuPage County &middot; 18th Judicial Circuit</h2>', '<h2 class="section-h" id="dupage">DuPage County &middot; 18th Judicial Circuit</h2>')
+    main = main.replace('<h2 class="section-h">Cook County</h2>', '<h2 class="section-h" id="cook">Cook County</h2>')
+    # 5. the records are published on JennifersLaw.org, not on this site
+    main = main.replace('Every judge named here is documented on this site.', 'The record on every judge named here is published at JennifersLaw.org.')
+    # 6. Judge Rohm's card leads with what his orders cost
+    main = main.replace('<h3>Do Not Reappoint Judge Robert W. Rohm</h3>\n  <p>Associate Judge, Law Division, DuPage County</p>',
+                        '<h3>Do Not Reappoint Judge Robert W. Rohm</h3>\n  <p>Associate Judge, Law Division, DuPage County. Sanctioned a self-represented litigant $29,478.23 with no ruling on the merits; she now pays about $70,000 to start over.</p>')
     return main
+
+
+def rohm_petition_main(main):
+    """Judge Rohm's petition page: the full argument, built from rohm_record.py, around the existing form and script."""
+    style = re.search(r'<style>.*?</style>', main, re.S).group(0)
+    form = re.search(r'<form class="pt-form" id="pt-sign".*?</form>', main, re.S).group(0)
+    script = re.search(r'<script>\s*\(function\(\)\{\s*var API=.*?</script>', main, re.S).group(0)
+    total = R.count_items() + 43
+    return (style + '<style>' + R.CSS + '</style>\n'
+        '<!-- ROHM-PETITION (built by _site-tools/build_action_site.py from rohm_record.py; edit that file, not this page) -->\n'
+        '<section class="page-hero"><div class="wrap">\n'
+        '  <p class="eyebrow"><a href="index.html">Petitions</a></p>\n'
+        '  <h1 class="page-title">Do Not Reappoint Judge Robert W. Rohm</h1>\n'
+        '  <p class="page-sub">Associate Judge, Law Division, DuPage County &middot; Appointed 2014 &middot; Current term ends June 30, 2027 &middot; Reappointment decided by secret ballot of the circuit judges in spring 2027</p>\n'
+        '</div></section>\n'
+        '<section class="section"><div class="wrap rec-grid">\n'
+        '  <div class="prose rr-lead">\n'
+        '    <h2>What His Orders Cost the Victim</h2>\n'
+        '    <p>' + R.LEAD + '</p>\n    <p>' + R.LEAD2 + '</p>\n'
+        '    <p class="rr-thesis">' + R.THESIS + '</p>\n'
+        '    <p><a class="btn-signal" href="#pt-sign">Sign the Petition</a></p>\n'
+        '  </div>\n'
+        '  <div>' + R.exhibit_html() + '</div>\n'
+        '</div></section>\n'
+        '<section class="section"><div class="wrap pt-grid">\n'
+        '  <div>\n'
+        '    <div class="pt-text"><span class="pt-label">The Petition</span><p>We, the undersigned, call on every circuit judge of the 18th Judicial Circuit who votes on reappointment to vote NO when Judge Robert W. Rohm asks to be reappointed in 2027. He dismissed a self-represented litigant&#8217;s case without a ruling on the merits, sanctioned her $29,478.23, revoked her fee waiver and her right to appear remotely, and barred her from emailing the court, leaving her to pay about $70,000 for the chance to start over. A judge who treats a citizen this way is unfit for judicial office, and no judge who has read this record can vote to keep him on the bench.</p></div>\n'
+        '    <ul class="pt-meta">\n'
+        '      <li><strong>Addressed to</strong>The circuit judges of the 18th Judicial Circuit, DuPage County</li>\n'
+        '      <li><strong>The decision</strong>Secret-ballot reappointment vote in spring 2027. Ballots go out no later than May 21, 2027; the current term ends June 30, 2027. Three-fifths of the circuit judges voting must say yes for him to keep the seat.</li>\n'
+        '      <li><strong>Why</strong>' + str(total) + ' reasons, listed below: ' + str(R.count_items()) + ' things he did, and the 43 grounds in the verified petitions to remove him that no judge has ever examined.</li>\n'
+        '      <li><strong>Expiration</strong>None. This petition never closes. The signatures are delivered before the vote, and the petition stays open afterward as a permanent public record.</li>\n'
+        '    </ul>\n'
+        '    <div style="display:flex;gap:16px;flex-wrap:wrap;">\n'
+        '      <a class="btn-ghost" href="' + RECORD + '/accountability/judge-robert-w-rohm.html" rel="noopener">Judge Rohm&#8217;s Orders, in Full</a>\n'
+        '      <a class="btn-ghost" href="../reappointment-vote.html">How the Vote Works</a>\n'
+        '    </div>\n'
+        '  </div>\n'
+        '  <div>\n' + form + '\n  </div>\n'
+        '</div></section>\n'
+        '<section class="section" aria-labelledby="rr-did-h"><div class="wrap">\n'
+        '  <h2 id="rr-did-h" class="section-h">What Judge Rohm Did</h2>\n'
+        '  <div class="rr-cols">' + R.what_he_did_html() + '</div>\n'
+        '</div></section>\n'
+        '<section class="section" aria-labelledby="rr-gr-h"><div class="wrap">\n'
+        '  <h2 id="rr-gr-h" class="section-h">The 43 Grounds Already Filed</h2>\n'
+        '  <p class="rr-note">From the verified petitions to remove Judge Rohm for cause filed between June 29 and August 26, 2026. No judge has ever examined them. ' + R.FILINGS_NOTE + '</p>\n'
+        '  <div class="rr-cols" style="margin-top:22px;">' + R.grounds_html() + '</div>\n'
+        '  <div style="display:flex;gap:16px;flex-wrap:wrap;margin-top:26px;">\n'
+        '    <a class="btn-signal" href="#pt-sign">Sign the Petition</a>\n'
+        '    <button type="button" class="btn-ghost jl-share-open" data-share-url="petitions/judge-robert-w-rohm.html" data-share-title="Do Not Reappoint Judge Robert W. Rohm" data-share-text="Judge Rohm sanctioned a self-represented litigant $29,478.23 without a ruling on the merits. She pays about $70,000 to start over; he pays nothing. Read the record and sign:">Share This Petition</button>\n'
+        '  </div>\n'
+        '</div></section>\n' + script + '\n')
 
 
 def rewrap_imported():
@@ -574,7 +691,13 @@ def rewrap_imported():
             title = html.unescape(re.search(r'<title>(.*?)</title>', s, re.S).group(1))
             desc = html.unescape(re.search(r'<meta name="description" content="([^"]*)"', s).group(1))
         main = s[s.find('<main id="main">') + len('<main id="main">'):s.find('</main>')]
-        page(p, title, desc, petition_tweaks(main), 'action-petitions')
+        main = petition_tweaks(main)
+        if p == 'petitions/judge-robert-w-rohm.html':
+            main = rohm_petition_main(main)
+            title = 'Do Not Reappoint Judge Robert W. Rohm \u2014 ' + NAME
+            desc = ('Judge Rohm sanctioned a self-represented litigant $29,478.23 without a ruling on the merits; she pays about $70,000 '
+                    'to start over. ' + str(R.count_items() + 43) + ' reasons not to reappoint him. Sign the petition.')
+        page(p, title, desc, main, 'action-petitions')
     return files
 
 

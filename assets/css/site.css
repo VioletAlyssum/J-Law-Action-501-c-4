@@ -21,7 +21,7 @@
      included, so no flat hairline is left to give the seam away. */
   --rule:linear-gradient(90deg,transparent,rgba(198,219,245,.55) 30%,rgba(255,255,255,.85) 50%,rgba(198,219,245,.55) 70%,transparent);
   --rule-v:linear-gradient(180deg,transparent,rgba(198,219,245,.55) 30%,rgba(255,255,255,.85) 50%,rgba(198,219,245,.55) 70%,transparent);
-  --cream:#FAF6EC; --cream2:#F4EFE2; --ink:#1A1A1A; --red:#6FB3FF;
+  --cream:#FAF6EC; --cream2:#F4EFE2; --ink:#1A1A1A; --red:#DCE7F5;
   --serif:'Manrope',-apple-system,sans-serif; --display:'Cormorant Garamond',Georgia,serif; --body:'Inter',-apple-system,sans-serif; --sans:'Libre Franklin',sans-serif; /* --serif = display font, --body = reading font */
 }
 *{margin:0;padding:0;box-sizing:border-box;}
@@ -560,23 +560,28 @@ a.jl-email-addr.btn-ghost,a.jl-email-addr.btn-chrome{text-transform:none;letter-
 
 /* =====================================================================
    JennifersLaw.org — November 2026 additions
-   Loaded after each page's own styles. Uses only the site's existing
-   palette: navy, silver (--spec, --steel1/2/3) and one signal blue.
-   Nothing here changes an existing component; it only adds new ones.
+   Loaded after each page's own styles. Uses only the site's own palette:
+   navy and polished silver. (Jennifer, Nov 5 2026: buttons in the original
+   silver; no blue accents.)
    ===================================================================== */
-:root{ --signal:#6FB3FF; --signal-deep:#2F6FD0; }
+:root{ --signal:#DCE7F5; --signal-deep:#AEC1D9; }
 
-/* ---------- Primary action button: polished blue, same shape as .btn-chrome ---------- */
+/* ---------- Primary action button: the same polished silver as .btn-chrome ---------- */
 .btn-signal{display:inline-block;white-space:nowrap;cursor:pointer;font-family:var(--sans);font-size:13px;letter-spacing:1px;
-  text-transform:uppercase;font-weight:700;padding:17px 34px;color:#fff;border:1px solid #9CC8FF;
-  background:linear-gradient(112deg,#245BB5 0%,#2F6FD0 18%,#3F86E6 34%,#69A9F7 46%,#A9CFFF 50%,#69A9F7 54%,#3F86E6 66%,#2F6FD0 82%,#245BB5 100%);
-  background-size:200% 100%;animation:jlSheen 9s linear infinite;text-shadow:0 1px 1px rgba(5,20,50,.45);
-  box-shadow:0 10px 26px rgba(20,60,140,.45),inset 0 1px 0 rgba(255,255,255,.45);transition:transform .15s ease,box-shadow .15s ease;}
-.btn-signal:hover,.btn-signal:focus-visible{transform:translateY(-1px);box-shadow:0 14px 30px rgba(20,60,140,.55),inset 0 1px 0 rgba(255,255,255,.55);}
-.btn-signal:focus-visible{outline:2px solid #DCE7F5;outline-offset:3px;}
+  text-transform:uppercase;font-weight:700;padding:17px 34px;color:#0A1220;border:1px solid #DCE7F5;
+  background:var(--spec,linear-gradient(112deg,#74879F 0%,#97ACC6 20%,#DEE9F5 41%,#FFFFFF 50%,#DEE9F5 59%,#97ACC6 80%,#74879F 100%));
+  background-size:200% 100%;animation:jlSheen 9s linear infinite;text-shadow:0 1px 0 rgba(255,255,255,.45);
+  box-shadow:0 14px 30px rgba(0,0,0,.38),inset 0 1px 0 rgba(255,255,255,.75);transition:transform .15s ease,box-shadow .15s ease;}
+.btn-signal:hover,.btn-signal:focus-visible{transform:translateY(-1px);box-shadow:0 18px 36px rgba(0,0,0,.45),inset 0 1px 0 rgba(255,255,255,.85);}
+.btn-signal:focus-visible{outline:2px solid #FFFFFF;outline-offset:3px;}
 @keyframes jlSheen{0%{background-position:0% 0;}100%{background-position:200% 0;}}
 @media (prefers-reduced-motion:reduce){.btn-signal{animation:none;}}
 @media(max-width:520px){.btn-signal{padding:15px 24px;white-space:normal;text-align:center;}}
+
+/* ---------- Exhibit cards: silver stamp, and the figures that matter most in polished chrome ---------- */
+.exhibit-hero .exhibit-stamp{border-color:#DCE7F5 !important;color:#EDF3FA !important;}
+.exhibit-row .val.red,.exhibit-hero .exhibit-row .val.red{background:linear-gradient(115deg,#AEC1D9 0%,#EDF3FA 30%,#FFFFFF 46%,#DCE7F5 62%,#AEC1D9 100%);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:#EDF3FA;font-weight:800;}
 
 /* ---------- The Latest (homepage + appeal page) ---------- */
 .latest-p{color:var(--steel2);font-size:16.5px;line-height:1.65;max-width:640px;margin-bottom:12px;}
@@ -594,7 +599,7 @@ a.jl-email-addr.btn-ghost,a.jl-email-addr.btn-chrome{text-transform:none;letter-
 .ap-raised{font-family:var(--serif);font-size:40px;font-weight:800;color:var(--white);line-height:1;}
 .ap-goal{font-family:var(--sans);font-size:12px;letter-spacing:1.4px;text-transform:uppercase;color:var(--steel1);}
 .ap-track{height:12px;background:rgba(198,219,245,.12);border:1px solid rgba(198,219,245,.32);border-radius:999px;overflow:hidden;margin:16px 0 10px;}
-.ap-fill{height:100%;background:linear-gradient(90deg,#2F6FD0,#6FB3FF 65%,#DCE7F5);border-radius:999px;transition:width .8s ease;}
+.ap-fill{height:100%;background:linear-gradient(90deg,#8399B4,#DCE7F5 70%,#FFFFFF);border-radius:999px;transition:width .8s ease;}
 .ap-note{color:var(--muted);font-size:14px;line-height:1.5;}
 .appeal-actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:22px;}
 .appeal-actions .btn-ghost{cursor:pointer;background:transparent;font-family:var(--sans);}

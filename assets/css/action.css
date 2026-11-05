@@ -37,7 +37,7 @@
 .pt-hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;}
 .pt-msg{display:none;margin-top:14px;padding:12px 14px;border:1px solid var(--steel3);color:var(--steel2);font-size:14.5px;line-height:1.55;}
 .pt-msg.show{display:block;}
-.pt-msg.err{border-color:#6FB3FF;}
+.pt-msg.err{border-color:#DCE7F5;}
 .pt-fine{font-size:12.5px;color:var(--muted);margin-top:14px;line-height:1.55;}
 .pt-groups{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:10px 0 8px;}
 @media(max-width:860px){.pt-groups{grid-template-columns:1fr;}}
@@ -77,3 +77,52 @@ h1.page-title.hero-two-line{font-family:var(--display);font-size:36px;line-heigh
 .hero-copy .hero-paras{margin-top:26px;}
 .hero-copy .hero-ctas{margin-top:34px !important;}
 @media(max-width:520px){.masthead-name{font-size:25px !important;white-space:nowrap;}.masthead .jl-mark{height:36px;}}
+
+/* "Who Pays" plate (homepage) */
+.wp-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px;text-align:left;}
+.wp-card{background:rgba(255,255,255,.78);border:1px solid #AEC1D9;padding:28px 30px;box-shadow:0 14px 30px rgba(14,29,54,.16),inset 0 1px 0 #fff;}
+.wp-card .wp-h{font-family:var(--sans);font-size:12px;letter-spacing:2.5px;text-transform:uppercase;color:#2A3C5F;font-weight:700;margin:0 0 14px;}
+.wp-card ul{list-style:none;margin:0;padding:0;}
+.wp-card li{padding:10px 0;border-bottom:1px solid rgba(14,29,54,.12);color:#1A2B47;font-size:17px;line-height:1.45;}
+.wp-card li:last-child{border-bottom:none;}
+.wp-card li b{font-family:var(--serif);font-weight:800;color:#0E1D36;}
+.wp-dark{background:linear-gradient(160deg,#2B3F5F 0%,#111E33 100%);border-color:#7E98BC;box-shadow:0 18px 36px rgba(14,29,54,.32),inset 0 1px 0 rgba(255,255,255,.12);}
+.wp-dark .wp-h{color:#BCCDE2;}
+.wp-dark li{color:#DCE7F5;border-color:rgba(198,219,245,.18);}
+.wp-nothing{font-family:var(--display);font-size:60px;font-weight:700;line-height:1;margin:2px 0 12px;
+  background:linear-gradient(115deg,#AEC1D9 0%,#EDF3FA 30%,#FFFFFF 46%,#DCE7F5 62%,#AEC1D9 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:#EDF3FA;}
+.wp-close{font-family:var(--display);font-style:italic;font-weight:600;font-size:30px;line-height:1.35;color:#0E1D36;max-width:860px;margin:34px auto 0;}
+@media(max-width:800px){.wp-grid{grid-template-columns:minmax(0,1fr);}.wp-close{font-size:24px;}.wp-nothing{font-size:48px;}}
+.sec-plate .wrap.center > .kicker{display:inline-block;}
+
+/* Record-page layout (same as JennifersLaw.org record pages) */
+/* Record pages (added Oct 2026) — exhibit card values, document lists, timeline quotes */
+.exhibit-hero .exhibit-row .val.gold{color:#DCE7F5;font-size:16px;letter-spacing:2px;text-transform:uppercase;font-family:var(--sans);font-weight:700;text-align:right;}
+.exhibit-hero .exhibit-row .val.gold.red{color:#DCE7F5;}
+.rec-grid{display:grid;grid-template-columns:minmax(0,1fr) 430px;gap:56px;align-items:start;}
+@media(max-width:960px){.rec-grid{grid-template-columns:1fr;gap:34px;}}
+.rec-grid .prose h2:first-child{margin-top:0;}
+.doc-list{list-style:none;margin:0;padding:0;}
+.doc-list li{display:flex;justify-content:space-between;gap:22px;align-items:baseline;padding:15px 0;border-bottom:1px solid var(--hair);}
+.doc-list li:last-child{border-bottom:none;}
+.doc-list .d-date{font-family:var(--sans);font-size:11.5px;letter-spacing:1.2px;text-transform:uppercase;color:var(--steel1);white-space:nowrap;min-width:140px;}
+.doc-list .d-desc{flex:1;color:var(--steel2);font-weight:300;font-size:16px;line-height:1.6;}
+.doc-list .d-link{font-family:var(--sans);font-size:11.5px;letter-spacing:1px;text-transform:uppercase;color:var(--steel1);border-bottom:1px solid var(--steel3);white-space:nowrap;}
+.doc-list .d-link:hover{color:var(--steel2);}
+@media(max-width:700px){.doc-list li{flex-direction:column;gap:6px;}}
+.rec-quote{border-left:2px solid var(--steel3);padding-left:20px;margin:6px 0 16px;font-family:var(--body);font-style:italic;color:var(--steel2);font-size:16.5px;line-height:1.7;}
+.case-block .case-summary p{margin-bottom:.9em;}
+.case-block .case-summary p:last-child{margin-bottom:0;}
+.from-jennifer{border:1px solid var(--steel3);background:var(--panel);padding:38px 36px;max-width:820px;}
+.from-jennifer .fj-label{font-family:var(--sans);font-size:11.5px;letter-spacing:2px;text-transform:uppercase;color:var(--steel1);display:block;margin-bottom:16px;}
+.from-jennifer p{font-family:var(--body);font-weight:300;font-size:18px;line-height:1.8;color:var(--steel2);margin-bottom:1.2em;text-align:justify;hyphens:auto;}
+.from-jennifer p:last-child{margin-bottom:0;}
+.from-jennifer .fj-sign{font-family:var(--display);font-style:italic;color:var(--white);text-align:right;}
+@media(max-width:700px){.from-jennifer{padding:28px 22px;}.from-jennifer p{text-align:left;hyphens:none;}}
+.redaction-note{font-size:13.5px;color:var(--muted);font-style:italic;margin-top:18px;max-width:760px;}
+.rec-next{display:flex;gap:28px;flex-wrap:wrap;margin-top:8px;}
+.not-contact{border:1px solid var(--steel3);padding:22px 24px;margin-top:26px;max-width:760px;font-size:15px;line-height:1.65;color:var(--steel2);}
+.not-contact strong{display:block;font-family:var(--sans);font-size:11.5px;letter-spacing:1.5px;text-transform:uppercase;color:var(--steel1);margin-bottom:8px;font-weight:600;}
+.card-notes{max-width:430px;margin-top:16px;}
+.card-notes p{font-size:13.5px;line-height:1.6;color:var(--muted);margin:0 0 .8em;}
+.no-motion{border-left:2px solid var(--steel3);padding-left:18px;margin-top:22px;max-width:760px;color:var(--steel2);font-size:16px;line-height:1.7;}

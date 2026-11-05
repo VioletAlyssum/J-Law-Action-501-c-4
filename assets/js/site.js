@@ -45,7 +45,7 @@
 
   /* ---------- 1. Appeal Fund progress ---------- */
   function paintAppeal() {
-    var goal = Number(APPEAL.goal) || 80000, raised = Number(APPEAL.raised) || 0;
+    var goal = Number(APPEAL.goal) || 70000, raised = Number(APPEAL.raised) || 0;
     var pct = Math.max(0, Math.min(100, raised / goal * 100));
     document.querySelectorAll('[data-appeal-progress]').forEach(function (box) {
       var r = box.querySelector('[data-ap-raised]'), g = box.querySelector('[data-ap-goal]');
@@ -183,7 +183,7 @@
     try { if (sessionStorage.getItem('jl-appeal-bar-closed') === '1') return; } catch (e) {}
     var bar = el('div', 'jl-appeal-bar');
     bar.setAttribute('role', 'region'); bar.setAttribute('aria-label', 'Fund the Appeal');
-    bar.innerHTML = '<div class="jab-text"><strong>Fund the Appeal</strong>' + money(APPEAL.goal || 80000) + ' for the bond and the appeal</div>' +
+    bar.innerHTML = '<div class="jab-text"><strong>Fund the Appeal</strong>' + money(APPEAL.goal || 70000) + ' to start over from square one</div>' +
       '<a class="btn-signal" href="' + ROOT + 'appeal/index.html">Give</a>' +
       '<button type="button" class="jab-close" aria-label="Hide this bar">&times;</button>';
     bar.querySelector('.jab-close').addEventListener('click', function () {
